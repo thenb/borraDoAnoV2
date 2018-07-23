@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ranking</ion-title>    
+  </ion-navbar>
+</ion-header>
+<ion-content> 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let m of borras" >
+    <img src="{{m.url_imagem}}" *ngIf="!m.atual" class="img-responsive " style=" width: 100% !important;height: auto !important;min-height: 250px;max-height: 250px;"/>
+      <ion-card-content *ngIf="!m.atual">          
+        <ion-card-title style="border-top: 1px solid lightslategray;">
+          {{m.nome}} - {{m.pontos}} Pontos
+          <ion-icon float-right ios="ios-beer" md="md-beer" color="light" style="zoom:3.0;" [class.atual]="m.beer" style="padding-left: 5px"></ion-icon>  
+          <ion-icon float-right ios="ios-trophy" md="md-trophy"  color="light" style="zoom:3.0;" [class.atual]="m.qtd_trofeu>0" style="padding-left: 5px"></ion-icon>
+         </ion-card-title> 
+         
+      </ion-card-content>
+  </ion-card> 
+</ion-content>
